@@ -1,7 +1,7 @@
 # Build stage with Maven and Java 24
 FROM maven:3.9.11-amazoncorretto-24 AS build
 WORKDIR /app
-COPY spring .
+COPY . .
 RUN mvn clean package
 
 # Runtime stage
