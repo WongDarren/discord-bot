@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: discord-bot
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${SUPABASE_DATABASE_URL}
+    username: ${SUPABASE_DATABASE_USER}
+    password: ${SUPABASE_DATABASE_PASSWORD}
+    hikari:
+      maximum-pool-size: 2
+      max-lifetime: 270000
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
