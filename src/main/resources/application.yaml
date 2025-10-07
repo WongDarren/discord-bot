@@ -7,9 +7,10 @@ spring:
     username: ${SUPABASE_DATABASE_USER}
     password: ${SUPABASE_DATABASE_PASSWORD}
     hikari:
+      minimum-idle: 2
       maximum-pool-size: 2
-      max-lifetime: 15000
-      keepalive-time: 15000
+      max-lifetime: 30000
+      keepalive-time: 30000
   jpa:
     show-sql: true
     hibernate:
