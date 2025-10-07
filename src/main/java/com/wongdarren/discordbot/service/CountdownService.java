@@ -3,12 +3,12 @@ package com.wongdarren.discordbot.service;
 
 import com.wongdarren.discordbot.model.Countdown;
 import com.wongdarren.discordbot.repository.CountdownRepository;
+import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CountdownService {
@@ -27,18 +27,22 @@ public class CountdownService {
         date,
         channelId,
         guildId);
+
     Countdown countdown = new Countdown();
     countdown.setName(name);
     countdown.setDate(date);
     countdown.setChannelId(channelId);
     countdown.setGuildId(guildId);
     countdownRepository.save(countdown);
+
     log.info("Countdown created: {}", countdown);
   }
 
   public List<Countdown> getCountdownsByGuildId(String guildId) {
     log.info("Fetching countdowns for guildId={}", guildId);
+
     List<Countdown> countdowns = countdownRepository.findByGuildId(guildId);
+
     log.info("Found {} countdowns for guildId={}", countdowns.size(), guildId);
     return countdowns;
   }
@@ -46,7 +50,9 @@ public class CountdownService {
   @Transactional
   public void deleteByNameAndGuildId(String name, String guildId) {
     log.info("Deleting countdown: name={}, guildId={}", name, guildId);
+
     countdownRepository.deleteByNameAndGuildId(name, guildId);
+
     log.info("Deleted countdown: name={}, guildId={}", name, guildId);
   }
 }
