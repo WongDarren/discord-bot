@@ -120,7 +120,7 @@ public class DiscordBotService extends ListenerAdapter {
     event.reply("Countdown **" + delName + "** deleted.").setEphemeral(true).queue();
   }
 
-  @Scheduled(cron = "0 * * * * *")
+  @Scheduled(cron = "0 0 0 * * *")
   public void sendCountdownReminders() {
     List<Countdown> allCountdowns = countdownRepository.findAll();
 
