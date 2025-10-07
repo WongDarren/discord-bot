@@ -6,6 +6,9 @@ spring:
     url: ${SUPABASE_DATABASE_URL}
     username: ${SUPABASE_DATABASE_USER}
     password: ${SUPABASE_DATABASE_PASSWORD}
+    hikari:
+      maximum-pool-size: 2
+      max-lifetime: 30000
   jpa:
     show-sql: true
     hibernate:
